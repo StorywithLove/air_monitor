@@ -23,7 +23,7 @@ jobs:
       # 3️⃣ 执行下载脚本
       - name: Run downloader
         run: |
-          python3 download_himawari.py
+          python3 download_himawari_arp.py
 
       # 4️⃣ 保存结果（可选）
       - name: Upload file
