@@ -1,4 +1,4 @@
-name: Himawari FTP Download
+name: Himawari ARP FTP Download
 
 on:
   workflow_dispatch:
