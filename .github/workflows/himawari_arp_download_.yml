@@ -1,0 +1,33 @@
+name: Himawari FTP Download
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "35 17 * * *"  # 每小时10分执行
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ 拉取代码
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2️⃣ 安装依赖（aria2 + python）
+      - name: Install tools
+        run: |
+          sudo apt update
+          sudo apt install -y aria2 python3
+
+      # 3️⃣ 执行下载脚本
+      - name: Run downloader
+        run: |
+          python3 download_himawari.py
+
+      # 4️⃣ 保存结果（可选）
+      - name: Upload file
+        uses: actions/upload-artifact@v4
+        with:
+          name: himawari-data
+          path: data/
